@@ -25,9 +25,9 @@ allure {
         // However, it would be better to put the file in a well-known location and configure it explicitly
         categoriesFile.set(layout.projectDirectory.file("config/allure/categories.json"))
         frameworks {
-            junit5 {
+            junit5 {// framework to use
                 // Defaults to allureJavaVersion
-                adapterVersion.set("2.19.0")
+                adapterVersion.set("2.19.0") //version of integration framework and Allure
                 enabled.set(true)
                 // Enables allure-junit4 default test listeners via META-INF/services/...
                 autoconfigureListeners.set(true)
