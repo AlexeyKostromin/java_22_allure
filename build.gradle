@@ -1,0 +1,75 @@
+plugins {
+    id("java")
+    id("io.qameta.allure") version "2.11.2"
+}
+
+group = "com.alexey_k"
+version = "1.0-SNAPSHOT"
+
+//allure {
+//    version.set("2.19.0")
+//    adapter {// responsible for folder builds/allure-results
+//        // Configure version for io.qameta.allure:allure-* adapters
+//        // It defaults to allure.version
+//        allureJavaVersion.set("2.19.0")
+//        aspectjVersion.set("1.9.5")
+//
+//        // Customize environment variables for launching Allure
+//        environment.put("JAVA_HOME", "/path/to/java_home")
+//
+//        autoconfigureListeners.set(true)
+//        aspectjWeaver.set(true)
+//
+//        // By default, categories.json is detected in src/test/resources/../categories.json,
+//        // However, it would be better to put the file in a well-known location and configure it explicitly
+//        categoriesFile.set(layout.projectDirectory.file("config/allure/categories.json"))
+//        frameworks {
+//            junit5 {// framework to use
+//                // Defaults to allureJavaVersion
+//                adapterVersion.set("2.19.0") //version of integration framework and Allure
+//                enabled.set(false)//set to false not to get 'No SLF4J providers were found' error
+//                // Enables allure-junit4 default test listeners via META-INF/services/...
+//                autoconfigureListeners.set(true)
+//            }
+//            junit4 {
+//                // same as junit5
+//            }
+//            testng {
+//                // same as junit5
+//            }
+//
+//        }
+//    }
+//}
+allure {
+    report {
+        version.set("2.19.0")
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set("2.19.0")
+            }
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    testImplementation(
+            "org.junit.jupiter:junit-jupiter:5.10.0",
+            "com.codeborne:selenide:6.18.0",
+            "io.qameta.allure:allure-selenide:2.24.0",
+            "org.apache.logging.log4j:log4j-core:2.17.1"
+    )
+
+    //testRuntimeOnly ("org.slf4j:slf4j-simple:1.7.29")
+}
+tasks.test {
+    useJUnitPlatform()
+}

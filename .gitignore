@@ -42,3 +42,6 @@ bin/
 .DS_Store
 /gradlew
 /gradlew.bat
+/.idea/gradle.xml
+/.idea/misc.xml
+/.idea/vcs.xml
