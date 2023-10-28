@@ -41,7 +41,7 @@ public class StepsAllureTest {
         step("Click on Issues tab", () -> {
             $("#issues-tab").click();
         });
-        step("Verify Issure with number displayed" + ISSUE, () -> {
+        step("Verify Issure with number displayed " + ISSUE, () -> {
             $(Selectors.withText("#" + ISSUE)).should(Condition.visible);
         });
 
